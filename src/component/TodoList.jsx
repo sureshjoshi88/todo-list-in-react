@@ -42,16 +42,11 @@ const TodoList = () => {
     })
 
     const handleEditTask = (index) =>{
-        const editTask = array.filter((item,ind)=>{
-            return ind===index
-                let newTask = prompt("Enter a new task");
-                array.slice(index,newTask)
-                console.log(newTask);
-
-        })
-        console.log(editTask);
-        
-        setArray(editTask)
+        const newTask = prompt("enter a value")
+        if(newTask!==null&& newTask.trim()!==""){
+            const editTask = array.map((item,ind)=> ind===index?{...item,text:newTask}:item)
+            setArray(editTask)
+        }        
     }
     return (
         <>
@@ -75,14 +70,17 @@ const TodoList = () => {
             </div>
 
             {filterArray.map((value, index) =>
-                <div className='grid md:grid-cols-3 p-2' key={index}>
-                    <div className='w-10'>
+                <div className='grid md:grid-cols-4 p-2' key={index}>
+                    <div>
+                        <p>{index+1}</p>
+                    </div>
+                    <div>
                         <input type="checkbox" checked={value.checked} onChange={() => toggleCheckbox(index)} name="" id="" />
                     </div>
-                    <div className='w-70'>
+                    <div >
                         <p className='text-xl font-medium'>{value.text}</p>
                     </div>
-                    <div className='w-20 flex gap-3'>
+                    <div className='flex gap-3'>
                         <button className='bg-amber-300 p-1 ps-2 pe-2 rounded cursor-pointer' onClick={()=>handleEditTask(index)}>Edit</button>
                         <button onClick={() => deleteTask(index)} className='bg-red-600 p-1 ps-2 pe-2 text-white rounded cursor-pointer'>Delete</button>
                     </div>
