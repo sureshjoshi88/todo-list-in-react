@@ -41,6 +41,18 @@ const TodoList = () => {
 
     })
 
+    const handleEditTask = (index) =>{
+        const editTask = array.filter((item,ind)=>{
+            return ind===index
+                let newTask = prompt("Enter a new task");
+                array.slice(index,newTask)
+                console.log(newTask);
+
+        })
+        console.log(editTask);
+        
+        setArray(editTask)
+    }
     return (
         <>
             <div className='p-1'>
@@ -63,7 +75,7 @@ const TodoList = () => {
             </div>
 
             {filterArray.map((value, index) =>
-                <div className='grid md:grid-cols-3 p-2'>
+                <div className='grid md:grid-cols-3 p-2' key={index}>
                     <div className='w-10'>
                         <input type="checkbox" checked={value.checked} onChange={() => toggleCheckbox(index)} name="" id="" />
                     </div>
@@ -71,10 +83,10 @@ const TodoList = () => {
                         <p className='text-xl font-medium'>{value.text}</p>
                     </div>
                     <div className='w-20 flex gap-3'>
-                        <button className='bg-amber-300 p-1 ps-2 pe-2 rounded cursor-pointer'>Edit</button>
+                        <button className='bg-amber-300 p-1 ps-2 pe-2 rounded cursor-pointer' onClick={()=>handleEditTask(index)}>Edit</button>
                         <button onClick={() => deleteTask(index)} className='bg-red-600 p-1 ps-2 pe-2 text-white rounded cursor-pointer'>Delete</button>
                     </div>
-                    
+
                 </div>
             )}
         </>
