@@ -70,12 +70,13 @@ const TodoList = () => {
             </div>
 
             {filterArray.map((value, index) =>
-                <div className='grid md:grid-cols-4 p-2' key={index}>
+               <div>
+                 <div className='grid md:grid-cols-4 p-2' key={index}>
                     <div>
-                        <p>{index+1}</p>
+                        <p className='text-xl'>{index+1}</p>
                     </div>
                     <div>
-                        <input type="checkbox" checked={value.checked} onChange={() => toggleCheckbox(index)} name="" id="" />
+                        <input type="checkbox" className=' h-8 w-4' checked={value.checked} onChange={() => toggleCheckbox(index)} name="" id="" />
                     </div>
                     <div >
                         <p className='text-xl font-medium'>{value.text}</p>
@@ -84,8 +85,11 @@ const TodoList = () => {
                         <button className='bg-amber-300 p-1 ps-2 pe-2 rounded cursor-pointer' onClick={()=>handleEditTask(index)}>Edit</button>
                         <button onClick={() => deleteTask(index)} className='bg-red-600 p-1 ps-2 pe-2 text-white rounded cursor-pointer'>Delete</button>
                     </div>
+                    
 
                 </div>
+                <hr />
+               </div>
             )}
         </>
     )
