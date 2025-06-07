@@ -7,13 +7,14 @@ const TodoList = () => {
     const [filter, setFilter] = useState('All');
 
     useEffect(()=>{
-        let storedata = JSON.parse(localStorage.getItem("todo"));
-            setArray(storedata)
+        const storedata = JSON.parse(localStorage.getItem("todo"))||[];
+                setArray(storedata)
+            
     
     },[]);
     
     useEffect(()=>{
-        localStorage.setItem("todo",JSON.stringify(array))
+        localStorage.setItem("todo",JSON.stringify(array));
     },[array]);
 
     const addTaskButton = () => {
@@ -48,7 +49,7 @@ const TodoList = () => {
     const filterArray = array.filter((item) => {
         if (filter === "All") return true;
         if (filter === "Active") return !item.checked;
-        if (filter === "Compalte") return item.checked;
+        if (filter === "Complete") return item.checked;
         return true;
 
     })
@@ -72,7 +73,7 @@ const TodoList = () => {
                     <select className='border rounded' value={filter} onChange={handleFilter} name="" id="">
                         <option value="All">All</option>
                         <option value="Active">Active</option>
-                        <option value="Compalte">Compalte</option>
+                        <option value="Complete">Complete</option>
                     </select>
                 </div>
                 <div className='flex justify-center mt-10 gap-2'>
