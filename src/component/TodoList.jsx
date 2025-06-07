@@ -6,19 +6,9 @@ const TodoList = () => {
     const [task, setTask] = useState('')
     const [filter, setFilter] = useState('All');
 
-    useEffect(()=>{
-        const storedata = JSON.parse(localStorage.getItem("todo"))||[];
-                setArray(storedata)
-            
-    
-    },[]);
-    
-    useEffect(()=>{
-        localStorage.setItem("todo",JSON.stringify(array));
-    },[array]);
-
+   
     const addTaskButton = () => {
-        if (task === "") {
+        if (task.trim() === "") {
             alert("please enter value");
         } else {
             const newTodo = {
@@ -27,20 +17,40 @@ const TodoList = () => {
             }
             setArray([...array, newTodo]);
             setTask("");
-            
+        localStorage.setItem("todo",JSON.stringify(array));
+  
         }
+        
     }
   
+     useEffect(()=>{
+        const storedata = JSON.parse(localStorage.getItem("todo"))||[];
+                setArray(storedata)
+            
+    
+    },[]);
+
+   
+    
+   
+
+     const keypresEvent=(e)=>{
+        if(e.key==="Enter"){
+            addTaskButton();            
+        }
+     }
     
     const deleteTask = (index) => {
         const finalList = array.filter((item, ind) => ind !== index);
-
+        localStorage.setItem('todo',JSON.stringify(finalList));
         setArray(finalList);
+
     }
     const toggleCheckbox = (index) => {
         const updastedArray = array.map((item, ind) => {
             return ind === index ? { ...item, checked: !item.checked } : item;
         });
+                localStorage.setItem('todo',JSON.stringify(updastedArray));
         setArray(updastedArray)
     }
     const handleFilter = (e) => {
@@ -58,6 +68,7 @@ const TodoList = () => {
         const newTask = prompt("enter a value")
         if(newTask!==null&& newTask.trim()!==""){
             const editTask = array.map((item,ind)=> ind===index?{...item,text:newTask}:item)
+            localStorage.setItem('todo',JSON.stringify(editTask));
             setArray(editTask)
         }        
     }
@@ -77,7 +88,7 @@ const TodoList = () => {
                     </select>
                 </div>
                 <div className='flex justify-center mt-10 gap-2'>
-                    <input className='border rounded' value={task} onChange={(e) => setTask(e.target.value)} type="text" id='101' placeholder='Enter a task' required />
+                    <input className='border rounded' autoFocus onKeyDown={keypresEvent} value={task} onChange={(e) => setTask(e.target.value)} type="text" id='101' placeholder='Enter a task' required name='todo' />
                     <button onClick={addTaskButton} className='bg-green-500 p-1 ps-3 pe-3 rounded cursor-pointer'>Add task</button>
                 </div>
             </div>
