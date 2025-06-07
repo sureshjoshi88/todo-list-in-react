@@ -1,10 +1,21 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const TodoList = () => {
 
     const [array, setArray] = useState([]);
     const [task, setTask] = useState('')
     const [filter, setFilter] = useState('All');
+
+    useEffect(()=>{
+        let storedata = JSON.parse(localStorage.getItem("todo"));
+            setArray(storedata)
+    
+    },[]);
+    
+    useEffect(()=>{
+        localStorage.setItem("todo",JSON.stringify(array))
+    },[array]);
+
     const addTaskButton = () => {
         if (task === "") {
             alert("please enter value");
@@ -15,10 +26,11 @@ const TodoList = () => {
             }
             setArray([...array, newTodo]);
             setTask("");
-
+            
         }
     }
-
+  
+    
     const deleteTask = (index) => {
         const finalList = array.filter((item, ind) => ind !== index);
 
@@ -70,8 +82,8 @@ const TodoList = () => {
             </div>
 
             {filterArray.map((value, index) =>
-               <div>
-                 <div className='grid md:grid-cols-4 p-2' key={index}>
+               <div key={index}>
+                 <div className='grid md:grid-cols-4 p-2' >
                     <div>
                         <p className='text-xl'>{index+1}</p>
                     </div>
