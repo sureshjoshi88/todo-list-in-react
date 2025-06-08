@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { IoIosSunny } from "react-icons/io";
 import { BsMoonFill } from "react-icons/bs";
+import Tostyfiy from './Tostyfiy';
 
 
 
@@ -9,6 +10,7 @@ const TodoList = (props) => {
     const [array, setArray] = useState([]);
     const [task, setTask] = useState('')
     const [filter, setFilter] = useState('All');
+    const [message,setMessage] = useState("");
 
 
        useEffect(() => {
@@ -17,10 +19,18 @@ const TodoList = (props) => {
 
     }, []);
 
+    const showMessage = (msg)=>{
+        setMessage(msg);
+        setTimeout(() => {
+            setMessage('')
+        }, 3000);
+    }
+
 
     const addTaskButton = () => {
         if (task.trim() === "") {
-            alert("please enter value");
+            // alert("please enter value");
+            showMessage("please enter value")
         } else {
             const newTodo = {
                 text: task,
@@ -30,6 +40,8 @@ const TodoList = (props) => {
             setArray(finalarray);
             setTask("");
             localStorage.setItem("todo", JSON.stringify(finalarray));
+            showMessage("Todo is succesfull aded");
+
         }
         
     }
@@ -44,6 +56,8 @@ const TodoList = (props) => {
         const finalList = array.filter((item, ind) => ind !== index);
         localStorage.setItem('todo', JSON.stringify(finalList));
         setArray(finalList);
+        showMessage("Todo is succesfull delete");
+
 
     }
     const toggleCheckbox = (index) => {
@@ -70,11 +84,14 @@ const TodoList = (props) => {
             const editTask = array.map((item, ind) => ind === index ? { ...item, text: newTask } : item)
             localStorage.setItem('todo', JSON.stringify(editTask));
             setArray(editTask)
+            showMessage("Todo is succesfull edited");
+
         }
     }
     return (
         <>
             <div className='p-1'>
+                <Tostyfiy message={message}/>
                 <nav className='flex justify-between p-2'>
                     <p className='font-bold mt-2 text-2xl '>Made By Suresh Joshi</p>
                     <p className='font-bold mt-2 text-2xl'>Todo app</p>
