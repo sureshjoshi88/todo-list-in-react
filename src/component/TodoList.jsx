@@ -83,7 +83,7 @@ const TodoList = (props) => {
                 <p className='font-bold mt-2 text-2xl '>Made By Suresh Joshi</p>
                 <p className='font-bold mt-2 text-2xl'>Todo app</p>
                 {props.mode==="light"?
-                  <button className='cursor-pointer' onClick={()=>props.handlemode()}><BsMoonFill /></button>:<button className='cursor-pointer'  onClick={()=>props.handlemode()}><IoIosSunny /></button>
+                  <button className='cursor-pointer text-2xl' onClick={()=>props.handlemode()}><BsMoonFill /></button>:<button className='cursor-pointer text-2xl'  onClick={()=>props.handlemode()}><IoIosSunny /></button>
               }
                 </nav>
                 <div className='text-end p-2 mt-2'>
@@ -94,8 +94,8 @@ const TodoList = (props) => {
                     </select>
                 </div>
                 <div className='flex justify-center mt-10 gap-2'>
-                    <input className='border rounded' autoFocus onKeyDown={keypresEvent} value={task} onChange={(e) => setTask(e.target.value)} type="text" id='101' placeholder='Enter a task' required name='todo' />
-                    <button onClick={addTaskButton} className='bg-green-500 p-1 ps-3 pe-3 rounded cursor-pointer'>Add task</button>
+                    <input className='border border-green-600  rounded w-100 h-10 outline-0 ' autoFocus onKeyDown={keypresEvent} value={task} onChange={(e) => setTask(e.target.value)} type="text" id='101' placeholder='Enter a task' required name='todo' />
+                    <button onClick={addTaskButton} className='bg-green-500 p-1 ps-3 pe-3 rounded cursor-pointer shadow shadow-blue-700 font-medium'>Add task</button>
                 </div>
             </div>
 
@@ -103,7 +103,7 @@ const TodoList = (props) => {
                <div key={index}>
                  <div className='grid md:grid-cols-4 p-2' >
                     <div>
-                        <p className='text-xl'>{index+1}</p>
+                        <p className='text-xl font-medium'>{index+1}</p>
                     </div>
                     <div>
                         <input type="checkbox" className=' h-8 w-4' checked={value.checked} onChange={() => toggleCheckbox(index)} name="" id="" />
@@ -112,8 +112,8 @@ const TodoList = (props) => {
                         <p className='text-xl font-medium'>{value.text}</p>
                     </div>
                     <div className='flex gap-3'>
-                        <button className='bg-amber-300 p-1 ps-2 pe-2 rounded cursor-pointer' onClick={()=>handleEditTask(index)}>Edit</button>
-                        <button onClick={() => deleteTask(index)} className='bg-red-600 p-1 ps-2 pe-2 text-white rounded cursor-pointer'>Delete</button>
+                        <button className='bg-amber-300 p-1 ps-2 pe-2 rounded cursor-pointer font-medium' onClick={()=>handleEditTask(index)}>Edit</button>
+                        <button onClick={() => deleteTask(index)} className='bg-red-600 p-1 ps-2 pe-2 text-white rounded cursor-pointer font-medium'>Delete</button>
                     </div>
 
                 </div>
