@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { IoIosSunny } from "react-icons/io";
+import { BsMoonFill } from "react-icons/bs";
 
-const TodoList = () => {
+
+
+const TodoList = (props) => {
 
     const [array, setArray] = useState([]);
     const [task, setTask] = useState('')
@@ -78,7 +82,9 @@ const TodoList = () => {
                 <nav className='flex justify-between p-2'>
                 <p className='font-bold mt-2 text-2xl '>Made By Suresh Joshi</p>
                 <p className='font-bold mt-2 text-2xl'>Todo app</p>
-                <button>theame</button>
+                {props.mode==="light"?
+                  <button className='cursor-pointer' onClick={()=>props.handlemode()}><BsMoonFill /></button>:<button className='cursor-pointer'  onClick={()=>props.handlemode()}><IoIosSunny /></button>
+              }
                 </nav>
                 <div className='text-end p-2 mt-2'>
                     <select className='border rounded' value={filter} onChange={handleFilter} name="" id="">
@@ -109,7 +115,6 @@ const TodoList = () => {
                         <button className='bg-amber-300 p-1 ps-2 pe-2 rounded cursor-pointer' onClick={()=>handleEditTask(index)}>Edit</button>
                         <button onClick={() => deleteTask(index)} className='bg-red-600 p-1 ps-2 pe-2 text-white rounded cursor-pointer'>Delete</button>
                     </div>
-                    
 
                 </div>
                 <hr />
