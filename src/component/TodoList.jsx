@@ -29,7 +29,6 @@ const TodoList = (props) => {
 
     const addTaskButton = () => {
         if (task.trim() === "") {
-            // alert("please enter value");
             showMessage("please enter value")
         } else {
             const newTodo = {
@@ -67,9 +66,7 @@ const TodoList = (props) => {
         localStorage.setItem('todo', JSON.stringify(updastedArray));
         setArray(updastedArray)
     }
-    const handleFilter = (e) => {
-        setFilter(e.target.value)
-    }
+ 
     const filterArray = array.filter((item) => {
         if (filter === "All") return true;
         if (filter === "Active") return !item.checked;
@@ -100,7 +97,7 @@ const TodoList = (props) => {
                     }
                 </nav>
                 <div className='text-end p-2 mt-2'>
-                    <select className='border rounded' value={filter} onChange={handleFilter} name="" id="">
+                    <select className='border rounded' value={filter} onChange={(e)=>setFilter(e.target.value)} name="" id="">
                         <option value="All">All</option>
                         <option value="Active">Active</option>
                         <option value="Complete">Complete</option>
