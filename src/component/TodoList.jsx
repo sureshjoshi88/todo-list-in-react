@@ -25,6 +25,9 @@ const TodoList = (props) => {
             setMessage('')
         }, 3000);
     }
+    const clearMessage=()=>{
+        setMessage("");
+    }
 
 
     const addTaskButton = () => {
@@ -85,13 +88,12 @@ const TodoList = (props) => {
             localStorage.setItem('todo', JSON.stringify(editTask));
             setArray(editTask)
             showMessage("Todo is succesfull edited");
-
         }
     }
     return (
         <>
             <div className='p-1'>
-                <Tostyfiy message={message}/>
+                <Tostyfiy clearMessage={clearMessage} message={message}/>
                 <nav className='flex justify-between p-2'>
                     <p className='font-bold mt-2 text-2xl '>Made By Suresh Joshi</p>
                     <p className='font-bold mt-2 text-2xl'>Todo app</p>
