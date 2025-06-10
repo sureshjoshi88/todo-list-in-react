@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import './App.css'
 import TodoList from './component/TodoList'
-import FetchingData from './component/FetchingData';
 
 function App() {
   const [mode,setMode] = useState("light");
@@ -18,8 +17,7 @@ function App() {
   }
   return (
    <>
-    {/* <TodoList mode={mode} handlemode={handlemode}/> */}
-    <FetchingData url = 'https://jsonplaceholder.typicode.com/posts'/>
+    <TodoList mode={mode} handlemode={handlemode}/>
    </>
   )
 }

@@ -106,7 +106,7 @@ const TodoList = (props) => {
                         <option value="Complete">Complete</option>
                     </select>
                 </div>
-                <div className='flex justify-center mt-10 gap-2'>
+                <div className='flex justify-center mt-10 gap-2 flex-wrap'>
                     <input className='border border-green-600  rounded w-100 h-10 outline-0 ' autoFocus onKeyDown={keypresEvent} value={task} onChange={(e) => setTask(e.target.value)} type="text" id='101' placeholder='Enter a task' required name='todo' />
                     <button onClick={addTaskButton} className='bg-green-500 p-1 ps-3 pe-3 rounded cursor-pointer shadow shadow-blue-700 font-medium'>Add task</button>
                 </div>
@@ -114,7 +114,7 @@ const TodoList = (props) => {
 
             {filterArray.map((value, index) =>
                 <div key={index}>
-                    <div className='grid md:grid-cols-4 p-2' >
+                    <div className='grid grid-cols-2 md:grid-cols-4 p-2' >
                         <div>
                             <p className='text-xl font-medium'>{index + 1}</p>
                         </div>
@@ -125,8 +125,8 @@ const TodoList = (props) => {
                             <p className='text-xl font-medium'>{value.text}</p>
                         </div>
                         <div className='flex gap-3'>
-                            <button className='bg-amber-300 p-1 ps-2 pe-2 rounded cursor-pointer font-medium' onClick={() => handleEditTask(index)}>Edit</button>
-                            <button onClick={() => deleteTask(index)} className='bg-red-600 p-1 ps-2 pe-2 text-white rounded cursor-pointer font-medium'>Delete</button>
+                            <button className='bg-amber-300 p-1 ps-2 pe-2 rounded h-10 cursor-pointer font-medium' onClick={() => handleEditTask(index)}>Edit</button>
+                            <button onClick={() => deleteTask(index)} className='bg-red-600 p-1 h-10 ps-2 pe-2 text-white rounded cursor-pointer font-medium'>Delete</button>
                         </div>
 
                     </div>
