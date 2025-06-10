@@ -68,10 +68,13 @@ const TodoList = (props) => {
     }
  
     const filterArray = array.filter((item) => {
-        if (filter === "All") return true;
-        if (filter === "Active") return !item.checked;
-        if (filter === "Complete") return item.checked;
-        return true;
+        if (filter === "All"){
+             return true;
+        }else if (filter === "Active"){
+            return !item.checked;
+        } else{
+            return item.checked;
+        }
 
     })
 
