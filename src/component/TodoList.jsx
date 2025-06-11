@@ -109,7 +109,7 @@ const TodoList = (props) => {
                     </select>
                 </div>
                 <div className='flex justify-center mt-10 gap-2 flex-wrap'>
-                    <input className='border border-green-600  rounded w-100 h-10 outline-0 ' autoFocus onKeyDown={keypresEvent} value={task} onChange={(e) => setTask(e.target.value)} type="text" id='101' placeholder='Enter a task' required name='todo' />
+                    <input className='border border-green-600  rounded w-100 h-10 outline-0 p-1' autoFocus onKeyDown={keypresEvent} value={task} onChange={(e) => setTask(e.target.value)} type="text" id='101' placeholder='Enter a task' required name='todo' />
                     <button onClick={addTaskButton} className='bg-green-500 p-1 ps-3 pe-3 rounded cursor-pointer shadow shadow-blue-700 font-medium'>Add task</button>
                 </div>
             </div>
