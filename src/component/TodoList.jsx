@@ -87,7 +87,7 @@ const TodoList = (props) => {
             const editTask = array.map((item, ind) => ind === index ? { ...item, text: newTask } : item)
             localStorage.setItem('todo', JSON.stringify(editTask));
             setArray(editTask)
-            showMessage("Todo is succesfull edited");
+            showMessage("Todo is succesfull updated");
         }
     }
     return (
@@ -98,7 +98,7 @@ const TodoList = (props) => {
                     <p className='font-bold mt-2 text-2xl '>Made By Suresh Joshi</p>
                     <p className='font-bold mt-2 text-2xl'>Todo app</p>
                     {props.mode === "light" ?
-                        <button className='cursor-pointer text-2xl' onClick={() => props.handlemode()}><BsMoonFill /></button> : <button className='cursor-pointer text-2xl' onClick={() => props.handlemode()}><IoIosSunny /></button>
+                        <button className='cursor-pointer text-2xl flex gap-1 items-center' onClick={() => props.handlemode()}><BsMoonFill /> Dark Mode</button> : <button className='cursor-pointer text-2xl flex gap-1 items-center' onClick={() => props.handlemode()}><IoIosSunny /> Light Mode</button>
                     }
                 </nav>
                 <div className='text-end p-2 mt-2'>
