@@ -102,7 +102,7 @@ const TodoList = (props) => {
                     }
                 </nav>
                 <div className='text-end p-2 mt-2'>
-                    <select className='border rounded' value={filter} onChange={(e)=>setFilter(e.target.value)} name="" id="">
+                    <select className={`border rounded ${props.mode==='light'?'bg-gray-600 text-white':'bg-white text-black'}`} value={filter} onChange={(e)=>setFilter(e.target.value)} name="" id="">
                         <option value="All">All</option>
                         <option value="Active">Active</option>
                         <option value="Complete">Complete</option>
