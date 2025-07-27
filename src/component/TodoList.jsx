@@ -115,7 +115,7 @@ const TodoList = (props) => {
             </div>
 
             {filterArray.map((value, index) =>
-                <div key={index}>
+                <div key={index} className='bg-gray-200 mt-3'>
                     <div className='grid grid-cols-2 md:grid-cols-4 p-2' >
                         <div>
                             <p className='text-xl font-medium'>{index + 1}</p>
@@ -132,7 +132,6 @@ const TodoList = (props) => {
                         </div>
 
                     </div>
-                    <hr />
                 </div>
             )}
         </>
