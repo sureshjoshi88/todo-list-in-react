@@ -124,7 +124,7 @@ const TodoList = (props) => {
                             <input type="checkbox" className=' h-8 w-4' checked={value.checked} onChange={() => toggleCheckbox(index)} name="" id="" />
                         </div>
                         <div >
-                            <p className='text-xl font-medium'>{value.text}</p>
+                            <p className={`text-xl font-medium ${props.mode==="dark"?"text-black":''}`}>{value.text}</p>
                         </div>
                         <div className='flex gap-3'>
                             <button className='bg-amber-300 p-1 ps-2 pe-2 rounded h-10 cursor-pointer font-medium' onClick={() => handleEditTask(index)}>Edit</button>
