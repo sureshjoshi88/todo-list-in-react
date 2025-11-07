@@ -118,7 +118,7 @@ const TodoList = (props) => {
                 <div key={index} className='bg-gray-200 mt-3  shadow-xl '>
                     <div className='grid grid-cols-2 md:grid-cols-4 p-2' >
                         <div>
-                            <p className='text-xl font-medium'>{index + 1}</p>
+                            <p className={`text-xl font-medium ${props.mode==="dark"?"text-gray-900":''}`}>{index + 1}</p>
                         </div>
                         <div>
                             <input type="checkbox" className=' h-8 w-4' checked={value.checked} onChange={() => toggleCheckbox(index)} name="" id="" />
@@ -126,9 +126,9 @@ const TodoList = (props) => {
                         <div >
                             <p className={`text-xl font-medium ${props.mode==="dark"?"text-black":''}`}>{value.text}</p>
                         </div>
-                        <div className='flex gap-3'>
-                            <button className='bg-amber-300 p-1 ps-2 pe-2 rounded h-10 cursor-pointer font-medium' onClick={() => handleEditTask(index)}>Edit</button>
-                            <button onClick={() => deleteTask(index)} className='bg-red-600 p-1 h-10 ps-2 pe-2 text-white rounded cursor-pointer font-medium'>Delete</button>
+                        <div className='flex gap-6'>
+                            <button className='bg-amber-300 p-1 px-6 text-lg rounded h-10 cursor-pointer font-medium' onClick={() => handleEditTask(index)}>Edit</button>
+                            <button onClick={() => deleteTask(index)} className='bg-red-600 p-1 h-10 px-6 text-lg text-white rounded cursor-pointer font-medium'>Delete</button>
                         </div>
 
                     </div>
