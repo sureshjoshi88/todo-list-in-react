@@ -115,16 +115,16 @@ const TodoList = (props) => {
             </div>
 
             {filterArray.map((value, index) =>
-                <div key={index} className='bg-gray-200 mt-3  shadow-xl '>
+                <div key={index} className={`${props.mode==="dark"?"bg-gray-700 shadow-amber-400 shadow rounded":"bg-gray-200 shadow-xl"} mt-4 m-2 p-1 `}>
                     <div className='grid grid-cols-2 md:grid-cols-4 p-2' >
                         <div>
-                            <p className={`text-xl font-medium ${props.mode==="dark"?"text-gray-900":''}`}>{index + 1}</p>
+                            <p className={'text-xl font-medium'}>{index + 1}</p>
                         </div>
                         <div>
                             <input type="checkbox" className=' h-8 w-4' checked={value.checked} onChange={() => toggleCheckbox(index)} name="" id="" />
                         </div>
                         <div >
-                            <p className={`text-xl font-medium ${props.mode==="dark"?"text-black":''}`}>{value.text}</p>
+                            <p className='text-xl font-medium'>{value.text}</p>
                         </div>
                         <div className='flex gap-6'>
                             <button className='bg-amber-300 p-1 px-6 text-lg rounded h-10 cursor-pointer font-medium' onClick={() => handleEditTask(index)}>Edit</button>
